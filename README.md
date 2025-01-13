@@ -6,9 +6,21 @@
 
 arch: linux/amd64, linux/arm64
 
-# modify
+# Customize
 ```code
 docker build -t shawoo/autossl --build-arg OPENRESTY_VERSION=1.27.1.1 .
+
+
+docker run -it --rm \
+      -p 80:80 -p 443:443 \
+      -v $PWD/openresty/web/:/data/web/ \
+      -v $PWD/openresty/nginx/conf/ssl/:/usr/local/openresty/nginx/conf/ssl/ \
+      -v $PWD/openresty/nginx/conf/conf.d/:/usr/local/openresty/nginx/conf/conf.d/ \
+      -v $PWD/openresty/acme_cert/:/acme_cert/ \
+      -e SslDomains="example.com;www.example.com" \
+      -e SslServer="zerossl" \
+      -e mail="my@example.com" \
+      shawoo/autossl
 ```
 
 # 描述(Desc)
