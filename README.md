@@ -6,6 +6,11 @@
 
 arch: linux/amd64, linux/arm64
 
+# modify
+```code
+docker build -t shawoo/autossl --build-arg OPENRESTY_VERSION=1.27.1.1 .
+```
+
 # 描述(Desc)
 这是一个可以自动申请（并自动更新）免费ssl证书的Openresty镜像。证书申请和更新使用的是开源工具acme.sh。
 你可以设置证书服务商：zerossl, letsencrypt，buypass，ssl等等，或是地址，如Letsencrypt测试地址：https://acme-staging-v02.api.letsencrypt.org/directory
